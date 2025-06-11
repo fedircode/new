@@ -8,25 +8,23 @@ load_dotenv()
 
 artistas = db.get_all_data("official", "artistas")
 
-with open("fallas.md", "w") as file:
+with open("fallas_filemoon.md", "w") as file:
     file.write("")
     file.close()
 
 for artista in artistas:
-    print(artista["name"])
+    print(f"probando artista: {artista['name']}")
     artista_id = artista["artista_id"]
     data_videos = db.get_data_eq("official", "videos", artista_id)
     for video in data_videos:
         # print(video["code_voe"])
         try:
-            response = requests.get(f"https://voe.sx/{video['code_voe']}")
+            response = requests.get(f"https://filemoon.to/e/{video['code_filemoon']}")
             if response.status_code != 200:
-                with open("fallas.md", "a") as file:
-                    file.write(f"artista: {artista['name']}, title: {video['title']} code_voe: {video['code_voe']}\n")
+                with open("fallas_filemoon.md", "a") as file:
+                    file.write(f"artista: {artista['name']}, title: {video['title']} code_filemoon: {video['code_filemoon']}\n")
                     file.close()
-                print(f"falla en {artista}, {video['code_voe']}")
-            else:
-                print(f"video {video['title']}, {video['code_voe']} es válido")
+                print(f"falla en {artista}, {video['code_filemoon']}")
         except Exception as e:
             print(f"ocurrio un error: {e}")
 
