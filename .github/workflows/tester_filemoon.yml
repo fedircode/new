@@ -30,7 +30,7 @@ jobs:
                   CLOUDFLARE_API_KEY: ${{ secrets.CLOUDFLARE_API_KEY }}
                   CF_PROJECT_NAME: ${{ secrets.CF_PROJECT_NAME }}
                   CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
-              run: python src/monitor/test_voe.py
+              run: python src/monitor/filemoon_tester.py
 
             - name: Subir archivo de fallas
               uses: actions/upload-artifact@v4

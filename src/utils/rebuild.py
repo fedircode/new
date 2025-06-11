@@ -12,11 +12,12 @@ headers = {
     'Authorization': f'Bearer {token}',
     'Content-Type': 'application/json'
 }
+def main():
+    response = requests.post(url, headers=headers)
 
-response = requests.post(url, headers=headers)
+    if response.status_code == 200:
+        print("Rebuild iniciado exitosamente 🚀")
+    else:
+        print("Error al iniciar rebuild:", response.status_code)
+        print(response.text)
 
-if response.status_code == 200:
-    print("Rebuild iniciado exitosamente 🚀")
-else:
-    print("Error al iniciar rebuild:", response.status_code)
-    print(response.text)
