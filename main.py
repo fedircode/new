@@ -28,7 +28,7 @@ def main():
     3.- Base de Datos
     4.- Portalnet
     5.- creación y subida de img
-    6.- Rebuild Cloudflare
+    6.- Rebuild Netlify
     7.- Ordenar carpeta
     8.- Salir''')
                 
@@ -189,11 +189,11 @@ def main():
                         elif subopcion5 == 3:
                             break
                 
-                # rebuild de proyecto en cloudflare
+                # rebuild de proyecto en Netlify
                 elif opcion == 6:
                     
                     while True:
-                        ic("---- hacer la rebuild en clouflare ----")
+                        ic("---- hacer la rebuild en Netlify ----")
                         print('''
             1.- Hacer Rebuild
             2.- Volver Atrás
