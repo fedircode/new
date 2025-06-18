@@ -146,14 +146,14 @@ class Voe:
         # 7° subir archivos
         try:
             lista_subidos = []
-            for numero,  ruta in enumerate(lista_rutas):
+            for index,  ruta in enumerate(lista_rutas):
                 url_servidor = Voe.obtener_servidor(api_key_voe)
                 respuesta = Voe.subir_archivo(ruta, api_key_voe, url_servidor)
                 lista_subidos.append(respuesta["file"]["file_code"])
                 ic(respuesta)
                 file_code = (respuesta["file"]["file_code"])
                 lista_subidos.append(file_code) 
-                ic(numero, ruta)
+                ic(f"{index}/{len(lista_rutas) - 1}, {ruta}")
                 Voe.move_vid(api_key_voe, file_code, folder_id_voe)
 
             ruta_sonido = "C:/Users/diego/Desktop/windows-notify.wav"

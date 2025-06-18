@@ -158,7 +158,7 @@ def main_upload_filemoon(artista):
     # print(lista_path)
 
     #subir y mover los archvivos
-    for valor, ruta in enumerate(lista_path):
+    for index, ruta in enumerate(lista_path):
         url_servidor = obtener_servidor(token_filemoon)
         respuesta = subir_archivo(ruta, token_filemoon,url_servidor)
         files = respuesta["files"]
@@ -168,8 +168,8 @@ def main_upload_filemoon(artista):
             break
         filemoon.move_folder_filemoon(token_filemoon, filecode, folder_id)
         print(respuesta)
-        ic(valor)
-        time.sleep(3)
+        ic(f"{index}/{len(lista_path) - 1}")
+        time.sleep(2)
 
     ruta_sonido = "C:/Users/diego/Desktop/windows-notify.wav"
 
