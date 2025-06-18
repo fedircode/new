@@ -2,13 +2,15 @@ from imagekitio import ImageKit
 import os
 from imagekitio.models.UploadFileRequestOptions import UploadFileRequestOptions
 import time
+from dotenv import load_dotenv
+load_dotenv()
 
 
 # SDK initialization monkeysleaks
 imagekit = ImageKit(
-    private_key='private_xzSpP2hIJhV1p+a54D7mXuo37a8=',
-    public_key='public_hRedibb12KEag2Uv0Noz6X8amYs=',
-    url_endpoint='https://ik.imagekit.io/b2o3nmna5'
+    private_key=os.environ.get("IMAGEKIT_PRIVATE_KEY"),
+    public_key=os.environ.get("IMAGEKIT_PUBLIC_KEY"),
+    url_endpoint=os.environ.get("IMAGEKIT_URL_ENDPOINT")
 )
 
 def crear_path(artista):
@@ -47,4 +49,4 @@ def main(artista):
     
     subir_img(artista, lista_split)
     print(f"imgs {artista}, subido")
-    winsound.PlaySound(ruta_sonido, winsound.SND_FILENAME) 
+    winsound.PlaySound(ruta_sonido, winsound.SND_FILENAME)
