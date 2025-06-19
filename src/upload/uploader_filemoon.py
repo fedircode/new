@@ -168,7 +168,7 @@ def main_upload_filemoon(artista):
             break
         filemoon.move_folder_filemoon(token_filemoon, filecode, folder_id)
         print(respuesta)
-        ic(f"{index}/{len(lista_path) - 1}")
+        ic(f"{index + 1 }/{len(lista_path)}")
         time.sleep(2)
 
     ruta_sonido = "C:/Users/diego/Desktop/windows-notify.wav"

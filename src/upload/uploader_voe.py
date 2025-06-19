@@ -153,7 +153,7 @@ class Voe:
                 ic(respuesta)
                 file_code = (respuesta["file"]["file_code"])
                 lista_subidos.append(file_code) 
-                ic(f"{index}/{len(lista_rutas) - 1}, {ruta}")
+                ic(f"{index + 1}/{len(lista_rutas)}, {ruta}")
                 Voe.move_vid(api_key_voe, file_code, folder_id_voe)
 
             ruta_sonido = "C:/Users/diego/Desktop/windows-notify.wav"

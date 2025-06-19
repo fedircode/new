@@ -3,14 +3,15 @@ import os
 from imagekitio.models.UploadFileRequestOptions import UploadFileRequestOptions
 import time
 from icecream import ic
+from dotenv import load_dotenv
 
-
+load_dotenv()
 
 # Configuración inicial de ImageKit portalnet
 imagekit = ImageKit(
-    private_key='private_ax18l5/nSkA/kQIb9nb/HkHih6k=',
-    public_key='public_KKJN0r7QZ3Y3N2UYGIMs/NRzOlo=',
-    url_endpoint='https://ik.imagekit.io/bhba8douv'
+    private_key=os.environ.get("IMAGEKIT_PRIVATE_KEY"),
+    public_key=os.environ.get("IMAGEKIT_PUBLIC_KEY"),
+    url_endpoint=os.environ.get("IMAGEKIT_URL_ENDPOINT")
 )
 
 
