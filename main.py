@@ -108,11 +108,14 @@ def main():
                                 if subopcion3 == 1:
                                     artista_agregar = input("ingrese artista: ")
                                     folders_voe = Voe.get_folders(token_voe)
+                                    folders_filemoon = filemoon.get_folders_filemoon(token_filemoon)
+                                    code_fld_filemoon = next(folder for folder in folders_filemoon if folder["name"] == artista_agregar)
+                                    fld_filemoon = code_fld_filemoon["fld_id"]
                                     for folder in folders_voe:
                                         if folder["name"] == artista_agregar:
                                             fld_voe = folder["fld_id"]
                                             break
-                                    add_data.main(artista_agregar, fld_voe)
+                                    add_data.main(artista_agregar, fld_voe, fld_filemoon)
                                     ic(f"Datos agregados de {artista_agregar} a la db")
                                 else:
                                     break
