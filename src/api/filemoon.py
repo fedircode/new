@@ -58,8 +58,7 @@ def delete_file_filemoon(token_filemoon, filecode):
         print(response)
 
 if __name__ == "__main__":
-    artista = "sopaipaposting"
-    title = "QySaEJSB.m4v"
-    filecode = "57lkveuzuy98"
+    data_folders = get_folders_filemoon(os.environ.get('API_KEY_FILEMOON'))
+    print(data_folders)
 
     

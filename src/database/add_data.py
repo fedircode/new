@@ -76,9 +76,9 @@ def cruzar_datos(artista, data_videos_voe, data_videos_filemoon, artista_id):
     return informacion
 
 
-def main(artista, fld_voe):
+def main(artista, fld_voe, fld_filemoon):
     try:
-        res = db.insert_data("official", "artistas", {"name": artista, "fld_voe": fld_voe})
+        res = db.insert_data("official", "artistas", {"name": artista, "fld_voe": fld_voe, "fld_filemoon": fld_filemoon})
         for dato in res:
             artista_id = (dato["artista_id"])
 
@@ -94,12 +94,17 @@ def main(artista, fld_voe):
 
 if __name__ == "__main__":
     token_voe = os.environ.get('API_KEY_VOE')
-
+    token_filemoon = os.environ.get('API_KEY_FILEMOON')
     artista_agregar = input("ingrese artista: ")
     folders_voe = Voe.get_folders(token_voe)
+    folders_filemoon = filemoon.get_folders_filemoon(token_filemoon)
     for folder in folders_voe:
         if folder["name"] == artista_agregar:
             fld_voe = folder["fld_id"]
             break
-    main(artista_agregar, fld_voe)
+    code_fld_filemoon = next(folder for folder in folders_filemoon if folder["name"] == artista_agregar)
+    fld_filemoon = code_fld_filemoon["fld_id"]
+    print(fld_filemoon)
+
+    main(artista_agregar, fld_voe, fld_filemoon)
     ic(f"Datos agregados de {artista_agregar} a la db")
