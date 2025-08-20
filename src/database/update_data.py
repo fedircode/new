@@ -3,7 +3,7 @@ from src.api import supabase_api as db
 import os
 from icecream import ic
 from src.api.voe import Voe
-from src.api.filemoon import Filemoon as fl
+from src.api.filemoon import FilemoonAPI as fl
 from dotenv import load_dotenv
 load_dotenv()
 
