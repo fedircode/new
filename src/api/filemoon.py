@@ -26,9 +26,9 @@ class FilemoonAPI:
         else:
             print(response)
 
-    def get_data_folder_filemoon(artista): 
+    def get_data_folder_filemoon(artista, token_filemoon): 
         token_filemoon = os.environ.get('API_KEY_FILEMOON')
-        folders = filemoon.get_folders_filemoon()
+        folders = FilemoonAPI.get_folders_filemoon(token_filemoon)
         for folder in folders:
             if folder["name"] == artista:
                 folder_id = folder["fld_id"]
@@ -61,7 +61,7 @@ class FilemoonAPI:
 
 if __name__ == "__main__":
     filemoon = FilemoonAPI(os.environ.get('API_KEY_FILEMOON'))
-    data_folders = filemoon.get_folders_filemoon()
+    data_folders = FilemoonAPI.get_folders_filemoon()
     print(data_folders)
 
     
