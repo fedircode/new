@@ -20,7 +20,7 @@ class Voe:
         return data["result"]["folders"]
 
     def get_data_folder(api_key_voe, folder_id_voe):
-        url = f"https://voe.sx/api/file/list?key={api_key_voe}&page=1&per_page=250&fld_id={folder_id_voe}"
+        url = f"https://voe.sx/api/file/list?key={api_key_voe}&fld_id={folder_id_voe}"
         response = requests.get(url) 
         if response.status_code == 200:
             data = response.json() # recibe los datos en formato json
@@ -54,7 +54,8 @@ class Voe:
 
 if __name__ == "__main__":
     token = os.environ.get('API_KEY_VOE')
-    Voe.create_folder(token, "test1")
+    data = Voe.get_data_folder(token, "kvw6kfca1b")
+    print(len(data))
 
      
 
