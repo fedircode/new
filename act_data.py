@@ -17,10 +17,12 @@ supabase: Client = create_client(
         schema="official",
     )
 )
-def update_data_artist(pais, name):
+def update_data_artist(column, data, name):
     response = (
-    supabase.table(f"artistas")
-    .update({"pais": pais})
+    supabase
+    .schema("public")
+    .table(f"artists")
+    .update({column: data})
     .eq("name", name)
     .execute()
     )
@@ -28,11 +30,10 @@ def update_data_artist(pais, name):
     return response
 
 if __name__ == "__main__":
-    token_filemoon = os.environ.get('API_KEY_FILEMOON')
-    folders_filemoon = fm.get_folders_filemoon(token_filemoon)
-    artistas_db = db.get_all_data("official", "artistas")
-    for artistas in artistas_db:
-        update_data_artist("chile", artistas["name"])
+    path = os.environ.get('local_path_linux')
+    name = os.listdir(path)
+    for artist in name:
+        print(artist)
 
 
 

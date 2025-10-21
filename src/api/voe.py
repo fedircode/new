@@ -54,8 +54,6 @@ class Voe:
 
 if __name__ == "__main__":
     token = os.environ.get('API_KEY_VOE')
-    data = Voe.get_data_folder(token, "kvw6kfca1b")
-    print(len(data))
+    data = (Voe.get_data_folder(token,"vdmx2cuxan"))    
 
-     
 

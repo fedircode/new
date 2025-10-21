@@ -4,4 +4,7 @@ icecream
 imagekitio
 opencv-python
 cloudflare
+sqlalchemy
+alembic
+psycopg2-binary
 -e .

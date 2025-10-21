@@ -61,7 +61,10 @@ class Voe:
     def crear_ruta(lista_comparacion, artista, ruta):
         lista_rutas = []
         for ruta in lista_comparacion:
-            ruta = f"E:/datos/{artista}/videos/{ruta}"
+            # TODO:  buscar la forma de automatizar la detección del sistema operativo y cargar diferentes rutas
+            #  cambiar cuando cargue otro sistema operativo
+            path = os.environ.get('local_path_linux')
+            ruta = f"{path}/{artista}/videos/{ruta}"
             lista_rutas.append(ruta)
         return lista_rutas
         
@@ -123,11 +126,11 @@ class Voe:
                 folder_id_voe = folder["fld_id"]
                 break
 
-        ruta = f"E:\\datos\\{artista}\\videos"
+        ruta = os.environ.get('local_path_linux')
 
 
         # 1° listar nombres en local
-        lista_video = Voe.nombre_video(ruta)
+        lista_video = Voe.nombre_video(ruta + f"/{artista}/videos")
 
         # 2° llamar a la api
         datos = Voe.info_carpeta_voe(api_key_voe, folder_id_voe)
@@ -165,4 +168,5 @@ class Voe:
 
 
 if __name__ == "__main__":
-    Voe.main_upload_voe()
+    # Voe.main_upload_voe()
+    prueba_rutas = create_ruta(["video1.mp4", "video2.mp4"], "artista_ejemplo", "E:/datos")
